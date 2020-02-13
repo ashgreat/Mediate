@@ -1,0 +1,12 @@
+name: Mediate
+title: Mediate
+username:
+account: malshe
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1808837
+bundleId: 2798980
+url: https://malshe.shinyapps.io/Mediate/
+when: 1581626156.36691
+asMultiple: FALSE
+asStatic: FALSE

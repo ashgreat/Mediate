@@ -1,0 +1,91 @@
+---
+title: "Output from Mediation Analysis"
+subtitle: "*(Made with Mediate App by Ashwin Malshe)*"
+output: pdf_document
+params:
+  date: 'NULL'
+  filename: 'NULL'
+  modelno: 'NULL'
+  xvar: 'NULL'
+  yvar: 'NULL'
+  med1: 'NULL'
+  med2: 'NULL'
+  mod1: 'NULL'
+  rseed: 'NULL'
+  bsample: 'NULL'
+  ci: 'NULL'
+  table1: 'NULL'
+  table2: 'NULL'
+  table3: 'NULL'
+  table4: 'NULL'
+  text1: 'NULL'
+  plot1: 'NULL'
+---
+
+## Model Details
+<br>
+
+```{r echo=FALSE}
+library(knitr)
+
+
+if (params[["modelno"]] == "PROCESS Model: Model 4"){
+  d1 = data.frame(
+                Parameters = c(paste("Date: ",params[["date"]]), params[["filename"]], params[["modelno"]],
+                          params[["xvar"]], params[["yvar"]], params[["med1"]],  params[["rseed"]],
+                          params[["bsample"]],  params[["ci"]]))
+} else if (params[["modelno"]] == "PROCESS Model: Model 6"){
+  d1 = data.frame(Parameters= c(paste("Date: ",params[["date"]]), params[["filename"]], params[["modelno"]],
+                          params[["xvar"]], params[["yvar"]], params[["med1"]], params[["med2"]],
+                          params[["rseed"]],  params[["bsample"]],  params[["ci"]]))
+
+} else if (params[["modelno"]] == "PROCESS Model: Model 8"){
+d1 = data.frame(Parameters = c(paste("Date: ",params[["date"]]), params[["filename"]], params[["modelno"]],
+                          params[["xvar"]], params[["yvar"]], params[["med1"]], 
+                           params[["mod1"]],  params[["rseed"]],  params[["bsample"]],  params[["ci"]]))
+}
+kable(d1, align = "l", row.names = FALSE, caption = "Model Parameters Used")
+
+```
+
+
+\newpage
+## Model Results
+
+<br>
+```{r echo=FALSE}
+knitr::kable(params[["table1"]], caption = "Mediator 1 Regression",
+             row.names = FALSE)
+```
+<br>
+
+```{r echo=FALSE}
+if (params[["modelno"]] == "PROCESS Model: Model 6"){
+knitr::kable(params[["table2"]], caption = "Mediator 2 Regression",
+             row.names = FALSE)}
+```
+
+<br>
+```{r echo=FALSE}
+knitr::kable(params[["table3"]], caption = "Dependent Variable Regression",
+             row.names = FALSE)
+```
+<br>
+
+```{r echo=FALSE}
+knitr::kable(params[["table4"]], caption = "Indirect and Total Effects",
+             row.names = FALSE)
+```
+<br>
+
+```{r echo=FALSE}
+if (!is.null(params[["text1"]])) params[["text1"]]
+```
+
+\newpage
+## Plot
+
+```{r echo=FALSE, fig.align='center'}
+params[["plot1"]]
+```
+
